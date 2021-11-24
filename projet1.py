@@ -10,7 +10,7 @@ import cvxpy as cp
 
 a=1
 b=1
-L=1
+L=2
 
 def c(z):
     n=np.size(z)[0]/2
