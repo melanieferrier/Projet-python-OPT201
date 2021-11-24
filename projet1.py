@@ -7,14 +7,19 @@ import cvxpy as cp
 #_______________Projet OPT201____________
 
 #2.
-def c(z,L,a,b):
+
+a=1
+b=1
+L=1
+
+def c(z):
     n=np.size(z)[0]/2
     x=[0]+z[0:n,:]+[a]
     y=[0]+z[n:,:]+[b]
     c=np.zeros((n+1,1))
     for i in range (n+1):
         l=(x[i+1]-x[i])**2+(y[i+1]-y[i])**2
-        c[i]=l-L**2
+        c[i,0]=l-L**2
     return c
     
 #3.
@@ -27,4 +32,11 @@ def cost(z):
     return S
 
 
-
+#4.
+def lag(z,lambda):
+    n=np.size(z)[0]/2
+    e=np.zeros((2*n,1))
+    for i in range (n):
+        e[i+n,0]=1
+    return np.transpose(e)*z + np.transpose(lambda)*c(z)
+    
