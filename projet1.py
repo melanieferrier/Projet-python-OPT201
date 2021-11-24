@@ -3,7 +3,10 @@ import matplotlib.pyplot as plt
 import cvxpy as cp
 # -*- coding: utf-8 -*-
 
+
 #_______________Projet OPT201____________
+
+#2.
 def c(z,L,a,b):
     n=np.size(z)[0]/2
     x=[0]+z[0:n,:]+[a]
@@ -14,7 +17,14 @@ def c(z,L,a,b):
         c[i]=l-L**2
     return c
     
-
+#3.
+def cost(z):
+    n=np.size(z)[0]/2
+    y=z[n:,:]
+    S=0
+    for i in range (n):
+        S=S+y[i]
+    return S
 
 
 
